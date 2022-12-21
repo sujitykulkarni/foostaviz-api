@@ -12,6 +12,9 @@ const fixturesRouter = require("./routes/fixtures");
 // defining the Express app
 const app = express();
 
+// Establishing the port
+const PORT = process.env.PORT || 5000;
+
 // adding Helmet to enhance your Rest API's security
 app.use(helmet());
 
@@ -25,10 +28,13 @@ app.use(cors());
 app.use(morgan("combined"));
 
 // routes
+app.get("/", (_req, res) => {
+  res.send("Hello World!");
+});
 app.use("/elements", elementsRouter);
 app.use("/teams", teamsRouter);
 app.use("/fixtures", fixturesRouter);
 // starting the server
-app.listen(3001, () => {
-  console.log("listening on port 3001");
+app.listen(PORT, () => {
+  console.log(`listening on port ${PORT}`);
 });
