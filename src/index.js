@@ -4,7 +4,7 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const helmet = require("helmet");
 const morgan = require("morgan");
-
+const path = require("path");
 const elementsRouter = require("./routes/elements");
 const teamsRouter = require("./routes/teams");
 const fixturesRouter = require("./routes/fixtures");
@@ -27,10 +27,9 @@ app.use(cors());
 // adding morgan to log HTTP requests
 app.use(morgan("combined"));
 
+app.use(express.static("public"));
 // routes
-app.get("/", (_req, res) => {
-  res.send("Hello World!");
-});
+app.use("/docs", express.static("public"));
 app.use("/elements", elementsRouter);
 app.use("/teams", teamsRouter);
 app.use("/fixtures", fixturesRouter);
