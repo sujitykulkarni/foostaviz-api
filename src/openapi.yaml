@@ -1,0 +1,556 @@
+openapi: 3.0.0
+basePath: "/v1"
+info:
+  title: "FooStaVizAPI"
+  description: "API for football stats"
+  version: "1.0.0"
+servers:
+  - url: "https://foostaviz-api.herokuapp.com/"
+    description: "production server"
+components:
+  schemas:
+    Element:
+      type: object
+      properties:
+        code:
+          type: number
+          description: A unique code for the player.
+        id:
+          type: number
+          description: A unique ID for the player.
+        minutes:
+          type: number
+          description: The number of minutes played by the player.
+        total_points:
+          type: number
+          description: The total points scored by the player.
+        first_name:
+          type: string
+          description: The player's first name.
+        second_name:
+          type: string
+          description: The player's second name.
+        web_name:
+          type: string
+          description: The player's name as it appears on the website.
+        goals_scored:
+          type: number
+          description: The number of goals scored by the player.
+        assists:
+          type: number
+          description: The number of assists made by the player.
+        clean_sheets:
+          type: number
+          description: The number of clean sheets kept by the player.
+        goals_conceded:
+          type: number
+          description: The number of goals conceded by the player.
+        own_goals:
+          type: number
+          description: The number of own goals scored by the player.
+        penalties_saved:
+          type: number
+          description: The number of penalties saved by
+        penalties_missed:
+          type: number
+          description: The number of penalties missed by the player.
+        yellow_cards:
+          type: number
+          description: The number of yellow cards received by the player.
+        red_cards:
+          type: number
+          description: The number of red cards received by the player.
+        saves:
+          type: number
+          description: The number of saves made by the player.
+        bonus:
+          type: number
+          description: The bonus points scored by the player.
+        bps:
+          type: number
+          description: The number of bonus points system points scored by the player.
+        influence:
+          type: string
+          description: The player's influence on the game.
+        creativity:
+          type: string
+          description: The player's creativity.
+        threat:
+          type: string
+          description: The player's threat level.
+        ict_index:
+          type: string
+          description: The player's ICT index.
+        starts:
+          type: number
+          description: The number of starts made by the player.
+        expected_goals:
+          type: string
+          description: The player's expected goals.
+        expected_assists:
+          type: string
+          description: The player's expected assists.
+        expected_goal_involvements:
+          type: string
+          description: The player's expected goal involvements.
+        expected_goals_conceded:
+          type: string
+          description: The player's expected goals conceded.
+        chance_of_playing_next_round:
+          type: number
+          description: The percentage chance that the player will play in the next round.
+        chance_of_playing_this_round:
+          type: number
+          description: The percentage chance that the player will play in this round.
+        cost_change_event:
+          type: number
+          description: The change in the player's cost due to an event.
+        cost_change_event_fall:
+          type: number
+          description: The change in the player's cost due to an event, if the change is negative.
+        cost_change_start:
+          type: number
+          description: The change in the player's cost at the start of the season.
+        cost_change_start_fall:
+          type: number
+          description: The change in the player's cost at the start of the season, if the change is negative.
+        dreamteam_count:
+          type: number
+          description: The number of times the player has been selected for the dream team.
+        element_type:
+          type: number
+          description: The player's position (1- goalkeeper, 2- defender, 3- midfielder, 4- forward).
+        ep_next:
+          type: string
+          description: The player's expected points for the next round.
+        ep_this:
+          type: string
+          description: The player's expected points for this round.
+        event_points:
+          type: number
+          description: The player's points for the current event.
+        form:
+          type: string
+          description: The player's form over the past 10 rounds.
+        in_dreamteam:
+          type: boolean
+          description: Indicates whether the player is currently in the dream team.
+        news:
+          type: string
+          description: Any news or updates regarding the player.
+        news_added:
+          type: string
+          format: date-time
+          description: The date and time at which the news was added.
+        now_cost:
+          type: number
+          description: The player's current cost.
+        photo:
+          type: string
+          description: The file name of the player's photo.
+        points_per_game:
+          type: string
+          description: The player's average points per game.
+        selected_by_percent:
+          type: string
+          description: The percentage of teams that have selected the player.
+        special:
+          type: boolean
+          description: Indicates whether the player has a special card.
+        squad_number:
+          type: number
+          description: The player's squad number.
+        status:
+          type: string
+          description: The player's status (a- available, d- doubtful, i- injured).
+        team:
+          type: number
+          description: The ID of the player's team.
+        team_code:
+          type: number
+          description: The code of the player's team.
+        transfers_in:
+          type: number
+          description: The number of transfers in to the player.
+        transfers_in_event:
+          type: number
+          description: The number of transfers in to the player in the current event.
+        transfers_out:
+          type: number
+          description: The number of transfers out from the player.
+        transfers_out_event:
+          type: number
+          description: The number of transfers out from the player in the current event.
+        value_form:
+          type: string
+          description: The player's value based on their form.
+        value_season:
+          type: string
+          description: The player's value based on their performance over the season.
+        influence_rank:
+          type: number
+          description: The player's influence rank.
+        influence_rank_type:
+          type: number
+          description: The player's influence rank type.
+        creativity_rank:
+          type: number
+          description: The player's creativity rank.
+        creativity_rank_type:
+          type: number
+          description: The player's creativity rank type.
+        threat_rank:
+          type: number
+          description: The player's threat rank.
+        threat_rank_type:
+          type: number
+          description: The player's threat rank type.
+        ict_index_rank:
+          type: number
+          description: The player's ICT index rank.
+        ict_index_rank_type:
+          type: number
+          description: The player's ICT index rank type.
+        corners_and_indirect_freekicks_order:
+          type: number
+          description: The order of the player for corners and indirect free kicks.
+        corners_and_indirect_freekicks_text:
+          type: string
+          description: The player's status for corners and indirect free kicks.
+        direct_freekicks_order:
+          type: number
+          description: The order of the player for direct free kicks.
+        direct_freekicks_text:
+          type: string
+          description: The player's status for direct free kicks.
+        penalties_order:
+          type: number
+          description: The order of the player for penalties.
+        penalties_text:
+          type: string
+          description: The player's status for penalties.
+        expected_goals_per_90:
+          type: number
+          description: The player's expected goals per 90 minutes.
+        saves_per_90:
+          type: number
+          description: The player's saves per 90 minutes.
+        expected_assists_per_90:
+          type: number
+          description: The player's expected assists per 90 minutes.
+        expected_goal_involvements_per_90:
+          type: number
+          description: The player's expected goal involvements per 90 minutes.
+        expected_goals_conceded_per_90:
+          type: number
+          description: The player's expected goals conceded per 90 minutes.
+        goals_conceded_per_90:
+          type: number
+          description: The player's goals conceded per 90 minutes.
+        now_cost_rank:
+          type: number
+          description: The player's current cost rank.
+        now_cost_rank_type:
+          type: number
+          description: The player's current cost rank type.
+        form_rank:
+          type: number
+          description: The player's form rank.
+        form_rank_type:
+          type: number
+          description: The player's form rank type.
+        points_per_game_rank:
+          type: number
+          description: The player's points per game rank.
+        points_per_game_rank_type:
+          type: number
+          description: The player's points per game rank type.
+        selected_rank:
+          type: number
+          description: The player's selected rank.
+        selected_rank_type:
+          type: number
+          description: The player's selected rank type.
+        starts_per_90:
+          type: number
+          description: The player's starts per 90 minutes.
+        clean_sheets_per_90:
+          type: number
+          description: The player's clean sheets per 90 minutes.
+    Fixture:
+      type: object
+      properties:
+        id:
+          type: number
+          description: The unique identifier for the event
+        code:
+          type: number
+          description: The code for the event
+        team_h:
+          type: number
+          description: The unique identifier for the home team
+        team_h_score:
+          type: null
+          description: The score of the home team (null if the event has not yet occurred)
+        team_a:
+          type: number
+          description: The unique identifier for the away team
+        team_a_score:
+          type: null
+          description: The score of the away team (null if the event has not yet occurred)
+        event:
+          type: number
+          description: The unique identifier for the event round
+        finished:
+          type: boolean
+          description: Whether the event has occurred
+        minutes:
+          type: number
+          description: The number of minutes played in the event (0 if the event has not yet occurred)
+        provisional_start_time:
+          type: boolean
+          description: Whether the start time for the event is provisional
+        kickoff_time:
+          type: string
+          description: The start time for the event, in ISO 8601 format
+        event_name:
+          type: string
+          description: The name of the event round
+        is_home:
+          type: boolean
+          description: Whether the team is the home team
+        difficulty:
+          type: number
+          description: The difficulty of the event, on a scale of 1 to 5
+        pulse_id:
+          type: integer
+          description: The unique identifier for this fixture in the pulse feed.
+        stats:
+          type: array
+          description: An array of statistics for this fixture.
+    History:
+      allOf:
+        - $ref: "#/components/schemas/Fixture/properties/id"
+        - $ref: "#/components/schemas/Element/properties/id"
+        - $ref: "#/components/schemas/Element/properties/minutes"
+        - $ref: "#/components/schemas/Element/properties/goals_scored"
+        - $ref: "#/components/schemas/Element/properties/assists"
+        - $ref: "#/components/schemas/Element/properties/clean_sheets"
+        - $ref: "#/components/schemas/Element/properties/goals_conceded"
+        - $ref: "#/components/schemas/Element/properties/own_goals"
+        - $ref: "#/components/schemas/Element/properties/penalties_saved"
+        - $ref: "#/components/schemas/Element/properties/penalties_missed"
+        - $ref: "#/components/schemas/Element/properties/yellow_cards"
+        - $ref: "#/components/schemas/Element/properties/red_cards"
+        - $ref: "#/components/schemas/Element/properties/saves"
+        - $ref: "#/components/schemas/Element/properties/bonus"
+        - $ref: "#/components/schemas/Element/properties/bps"
+        - type: object
+          properties:
+            opponent_team:
+              type: number
+              description: The unique ID of the opponent team.
+            total_points:
+              type: number
+              description: The total points scored by the player in the fixture.
+            was_home:
+              type: boolean
+              description: Indicates whether the fixture was played at the player's home team's stadium.
+            kickoff_time:
+              type: string
+              format: date-time
+              description: The date and time of the fixture.
+            team_h_score:
+              type: number
+              description: The score of the player's team in the fixture.
+            team_a_score:
+              type: number
+              description: The score of the opponent team in the fixture.
+            round:
+              type: number
+              description: The round number of the competition in which the fixture was played.
+    HistoryPast:
+      allOf:
+        - $ref: "#/components/schemas/Element/properties/total_points"
+        - $ref: "#/components/schemas/Element/properties/minutes"
+        - $ref: "#/components/schemas/Element/properties/goals_scored"
+        - $ref: "#/components/schemas/Element/properties/assists"
+        - $ref: "#/components/schemas/Element/properties/clean_sheets"
+        - $ref: "#/components/schemas/Element/properties/goals_conceded"
+        - $ref: "#/components/schemas/Element/properties/own_goals"
+        - $ref: "#/components/schemas/Element/properties/penalties_saved"
+        - $ref: "#/components/schemas/Element/properties/penalties_missed"
+        - $ref: "#/components/schemas/Element/properties/yellow_cards"
+        - $ref: "#/components/schemas/Element/properties/red_cards"
+        - $ref: "#/components/schemas/Element/properties/saves"
+        - $ref: "#/components/schemas/Element/properties/influence"
+        - $ref: "#/components/schemas/Element/properties/creativity"
+        - $ref: "#/components/schemas/Element/properties/threat"
+        - $ref: "#/components/schemas/Element/properties/ict_index"
+        - $ref: "#/components/schemas/Element/properties/starts"
+        - $ref: "#/components/schemas/Element/properties/expected_goals"
+        - $ref: "#/components/schemas/Element/properties/expected_assists"
+        - $ref: "#/components/schemas/Element/properties/expected_goal_involvements"
+        - $ref: "#/components/schemas/Element/properties/expected_goals_conceded"
+        - type: object
+          properties:
+            season_name:
+              type: string
+              description: The name of the season
+            element_code:
+              $ref: "#/components/schemas/Element/properties/code"
+            start_cost:
+              type: integer
+              description: The start cost of the element
+            end_cost:
+              type: integer
+              description: The end cost of the element
+    HomeAwayStats:
+      type: object
+      properties:
+        stat_key:
+          type: string
+          enum:
+            - total_points
+            - minutes
+            - goals_scored
+            - assists
+            - clean_sheets
+            - goals_conceded
+            - transfers_in
+            - transfers_out
+            - matches
+          description: A key for which the home vs away stats are to be computed
+        home:
+          type: number
+          description: A value against the stat_key based on home games played by the player
+        away:
+          type: number
+          description: A value against the stat_key based on away games played by the player
+    OpponentStrengthStats:
+      type: object
+      properties:
+        opponent_team:
+          type: integer
+          description: The ID of the opponent team.
+        total_points:
+          $ref: "#/components/schemas/Element/properties/total_points"
+        minutes:
+          type: integer
+          description: The number of minutes played against the opponent team.
+        selected:
+          type: integer
+          description: The number of times a player was selected to play against the opponent team.
+        transfers_in:
+          type: integer
+          description: The number of transfers in for the player against the opponent team.
+        transfers_out:
+          type: integer
+          description: The number of transfers out for the player against the opponent team.
+        opponent_strength:
+          type: integer
+          description: The strength of the opponent team.
+  parameters:
+    elementId:
+      name: elementId
+      in: path
+      required: true
+      schema:
+        type: string
+definitions:
+  GetElementsResponse:
+    $ref: "#/components/schemas/Element"
+  GetElementSummaryResponse:
+    type: object
+    properties:
+      fixtures:
+        type: array
+        items:
+          $ref: "#/components/schemas/Fixture"
+      history:
+        type: array
+        items:
+          $ref: "#/components/schemas/History"
+      history_past:
+        type: array
+        items:
+          $ref: "#/components/schemas/HistoryPast"
+      stats:
+        type: object
+        properties:
+          home_vs_away:
+            type: array
+            items:
+              $ref: "#/components/schemas/HomeAwayStats"
+          opponent_strength_stats:
+            type: array
+            items:
+              $ref: "#/components/schemas/OpponentStrengthStats"
+
+paths:
+  /elements:
+    get:
+      tags:
+        - Players
+      summary: "Fetch Elements"
+      description: "Elements is a term used by FPL API for players"
+      operationId: "getElements"
+      responses:
+        200:
+          description: "List of elements"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/definitions/GetElementsResponse"
+        403:
+          description: "Forbidden"
+        404:
+          description: "Not Found"
+        500:
+          description: "Internal Server Error"
+  /elements/summary/{elementId}:
+    get:
+      tags:
+        - Players
+      summary: "Fetch Element Summary"
+      description: "Get element (player) summary by element ID"
+      operationId: "getElementSummary"
+      parameters:
+        - $ref: "#/components/parameters/elementId"
+      responses:
+        200:
+          description: "Element summary"
+          content:
+            application/json:
+              schema:
+                $ref: "#/definitions/GetElementSummaryResponse"
+        403:
+          description: "Forbidden"
+        404:
+          description: "Not Found"
+        500:
+          description: "Internal Server Error"
+  /fixtures:
+    get:
+      tags:
+        - Fixtures
+      summary: "Fetch fixtures"
+      description: "Fetch fixtures"
+      operationId: "getFixtures"
+      responses:
+        200:
+          description: "List of fixtures"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Fixture"
+        403:
+          description: "Forbidden"
+        404:
+          description: "Not Found"
+        500:
+          description: "Internal Server Error"
